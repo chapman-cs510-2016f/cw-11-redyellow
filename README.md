@@ -32,7 +32,7 @@ Complete the following exercises, saving your solutions in the indicated files.
 
 Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
 
-**CHANGEME**
+**I learned about stack which is first in last out. and Matrix which has column-major ordering and row-major ordering. But I don't know why STACK itself defined as a pointer to a struct. I will ask you in class.**
 
 ## Honor Pledge
 
