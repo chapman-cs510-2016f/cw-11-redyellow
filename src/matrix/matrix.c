@@ -68,6 +68,7 @@ MVALUE mget(const MATRIX *m, const MINDEX row, const MINDEX col) {
   /*
    * CODE GOES HERE
    */
+	return (m->cols+row)+col;
 }
 
 // Abstraction layer in case implementation of VALUE changes later
@@ -89,3 +90,13 @@ void print_matrix(const MATRIX *m) {
 }
 
 // Implementation for add_matrix goes below
+MATRIX add_matrix(const MATRIX *a, const MATRIX *b){
+	MATRIX m = new_matrix(a->rows,a->cols);
+	int i,j;
+	for (i=0;i<a->rows;i++){
+		for (j=0;j<a->cols;j++){
+			*(m.mat + (m.cols * i) + j) = *(a->mat + (a->cols * i) + j) + *(b->mat + (b->cols * i) + j);
+		}
+	} 
+	return m;
+}
