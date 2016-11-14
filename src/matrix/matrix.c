@@ -82,10 +82,11 @@ void print_matrix(const MATRIX *m) {
   // print values of matrix separated by tabs
   // with each row on a separate line
   printf("Matrix (rows: %d, cols: %d) \n", maxr, maxc);
-  int r, c;
+
 // Code goes below
+    int r, c;
     for (r=0; r<maxr; ++r) {
-        for (int c=0; c<maxc; ++c) {
+        for (c=0; c<maxc; ++c) {
             const MVALUE v = mget(m, r, c);
             print_value(v);
             printf("\t");
@@ -93,7 +94,6 @@ void print_matrix(const MATRIX *m) {
         printf("\n");
     }
 }
-
 
 // Implementation for add_matrix goes below
 MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
@@ -107,6 +107,7 @@ MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
     maxc = m->cols;
 
     MATRIX a = new_matrix(maxr, maxc);
+
     int r, c;
     for (r=0; r<maxr; ++r) {
         for (c=0; c<maxc; ++c) {
@@ -119,7 +120,6 @@ MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
     }
     return a;
 }
-
 
 /*
 MATRIX add_matrix(const MATRIX *a, const MATRIX *b) {
