@@ -1,6 +1,6 @@
 # CS510 CW 11
 
-**Author(s):** _Kaiqin Huang,Nengyin Zhu_
+**Author(s):** _Kaiqin Huang, Nengyin Zhu_
 
 [![Build Status](https://travis-ci.org/chapman-cs510-2016f/cw-11-redyellow.svg?branch=master)](https://travis-ci.org/chapman-cs510-2016f/cw-11-redyellow)
 
@@ -30,9 +30,33 @@ Complete the following exercises, saving your solutions in the indicated files.
 
 ## Assessment
 
-Analyze in this section what you found useful about this assignment in your own words. Include any lingering questions or comments that you may have.
+Helen:
 
-**I learned about stack which is first in last out. and Matrix which has column-major ordering and row-major ordering. But I don't know why STACK itself defined as a pointer to a struct. I will ask you in class.**
+I learned about stack which is first in last out.  Matrix has column-major ordering and row-major ordering.  But I don't know why STACK itself defined as a pointer to a struct.  I will ask you in class.
+
+Kaiqin:
+
+It is the shortest and hardest-to-understand (the stack thing) C programming homework so far.  But I have got most of it after three whole days' learning, asking, thinking, and practicing.  Specifically, I have learned
+
+Matrix:
+
+1. How a matrix is defined (rows, cols, and mat);
+2. What "row-majoring ordering" and "column-majoring ordering" are;
+3. How to indicate an element (using \*(m->mat + (m->cols * row) + col) = v);
+4. A combination of two *for* loops seems the best way to reach each element in the matrix when we want to print it out or to do math (e.g. addition) on it.
+
+Stack:
+
+1. How a struct stack, a STACK, and a STACK \* is defined;
+2. STACK \* confused everything.  Graphs helped me understand where each stach or pointer is and how the system works as a whole;
+3. What functions push_stack and pop_stack do.  Push_stack is to add one more element to the top.  Pop_stack is to remove the uppest stack and return the value in it;
+4. A *while* loop is very useful to reach each stack and analyze the value in it;
+
+Lingering questions:
+
+1. Matrix: I actually could not answer the question ii. on how to force C to use the non-default array ordering if desired.  It seems impossible to me or maybe I do not know a specific code or trick.  Our answer seems to answering what the existing code should be if C is using column-major ordering.
+
+2. Stack: When adding an element, why do not add the stack to the bottom, so that it is just pointed to by the current bottomest stack, and its own head points to NULL?  We can reach the bottomest stack by a *while* loop.  It seems easier to me because we no longer need to reset the pointer s.
 
 ## Honor Pledge
 
@@ -43,4 +67,4 @@ I pledge that all the work in this repository is my own with only the following 
 
 Signed,
 
-**Kaiqin Huang,Nengyin Zhu**
+**Kaiqin Huang, Nengyin Zhu**
