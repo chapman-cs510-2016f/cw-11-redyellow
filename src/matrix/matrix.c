@@ -64,11 +64,9 @@ void mset(MATRIX *m, const MINDEX row, const MINDEX col, const MVALUE v) {
   //
 }
 
+// Code goes below
 MVALUE mget(const MATRIX *m, const MINDEX row, const MINDEX col) {
-  /*
-   * CODE GOES HERE
-   */
-	return (m->cols+row)+col;
+    return *(m->mat + (m->cols * row) + col);
 }
 
 // Abstraction layer in case implementation of VALUE changes later
@@ -84,19 +82,54 @@ void print_matrix(const MATRIX *m) {
   // print values of matrix separated by tabs
   // with each row on a separate line
   printf("Matrix (rows: %d, cols: %d) \n", maxr, maxc);
-  /* 
-   * CODE GOES HERE
-   */
+
+// Code goes below
+    for (int r=0; r<maxr; ++r) {
+        for (int c=0; c<maxc; ++c) {
+            const MVALUE v = mget(m, r, c);
+            print_value(v);
+            printf("\t");
+        }
+        printf("\n");
+    }
 }
 
+
 // Implementation for add_matrix goes below
-MATRIX add_matrix(const MATRIX *a, const MATRIX *b){
+MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
+    if (m->rows != n->rows || m->cols != n->cols) {
+    fprintf(stderr, "ERROR: two matrices are not addable");
+    return *m;
+    }
+
+    MINDEX maxr, maxc;
+    maxr = m->rows;
+    maxc = m->cols;
+
+    MATRIX a = new_matrix(maxr, maxc);
+
+    for (int r=0; r<maxr; ++r) {
+        for (int c=0; c<maxc; ++c) {
+            MVALUE v = mget(m, r, c) + mget(n, r, c);
+            mset(&a, r, c, v);
+//            const MVALUE v = *(m->mat + (maxc * r) + c);
+//            const MVALUE w = *(n->mat + (maxc * r) + c);
+//            *(a->mat + (maxc * r) + c) = v + w;
+        }
+    }
+    return a;
+}
+
+
+/*
+MATRIX add_matrix(const MATRIX *a, const MATRIX *b) {
 	MATRIX m = new_matrix(a->rows,a->cols);
 	int i,j;
 	for (i=0;i<a->rows;i++){
 		for (j=0;j<a->cols;j++){
 			*(m.mat + (m.cols * i) + j) = *(a->mat + (a->cols * i) + j) + *(b->mat + (b->cols * i) + j);
 		}
-	} 
+	}
 	return m;
 }
+*/
