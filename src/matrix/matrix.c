@@ -82,9 +82,9 @@ void print_matrix(const MATRIX *m) {
   // print values of matrix separated by tabs
   // with each row on a separate line
   printf("Matrix (rows: %d, cols: %d) \n", maxr, maxc);
-
+  int r, c;
 // Code goes below
-    for (int r=0; r<maxr; ++r) {
+    for (r=0; r<maxr; ++r) {
         for (int c=0; c<maxc; ++c) {
             const MVALUE v = mget(m, r, c);
             print_value(v);
@@ -98,8 +98,8 @@ void print_matrix(const MATRIX *m) {
 // Implementation for add_matrix goes below
 MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
     if (m->rows != n->rows || m->cols != n->cols) {
-    fprintf(stderr, "ERROR: two matrices are not addable");
-    return *m;
+        fprintf(stderr, "ERROR: two matrices are not addable");
+        return *m;
     }
 
     MINDEX maxr, maxc;
@@ -107,9 +107,9 @@ MATRIX add_matrix(const MATRIX *m, const MATRIX *n) {
     maxc = m->cols;
 
     MATRIX a = new_matrix(maxr, maxc);
-
-    for (int r=0; r<maxr; ++r) {
-        for (int c=0; c<maxc; ++c) {
+    int r, c;
+    for (r=0; r<maxr; ++r) {
+        for (c=0; c<maxc; ++c) {
             MVALUE v = mget(m, r, c) + mget(n, r, c);
             mset(&a, r, c, v);
 //            const MVALUE v = *(m->mat + (maxc * r) + c);
